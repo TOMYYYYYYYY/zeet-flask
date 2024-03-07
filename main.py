@@ -7,7 +7,7 @@ def hello_world():
     html = f"<h1>Deployed with Zeet!!</h1>"
     return html
 	
-@app.route('/receive_message', methods=['POST'])
+@app.route('/receive', methods=['POST'])
 def receive_message():
     message = request.json.get('message')
     # Faites quelque chose avec le message reçu
