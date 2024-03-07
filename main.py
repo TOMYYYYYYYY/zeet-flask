@@ -20,16 +20,12 @@ def receive():
     print('Message received:', message)
     return json.dumps({'status': 'success'}), 200
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
 
 #app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    html = f"<h1>Deployed Zeet!!</h1>"
+    html = f"<h1>Deployed Zt!!</h1>"
     return html
 	
 #@app.route('https://hgjhek62v7.execute-api.us-west-2.amazonaws.com/receive')
