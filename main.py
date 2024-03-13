@@ -6,7 +6,8 @@ CORS(app)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!
+    html = f"<h1>Deployed with Zeet!!</h1>"
+    return html
      
 @app.route('/receive', methods=['POST'])
 def receive_message():
