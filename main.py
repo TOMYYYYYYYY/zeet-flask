@@ -14,12 +14,13 @@ def receive_message():
     data = request.get_json()
     message = data.get('message')
     id = data.get('id')
+    app.logger.info(id)
     # Process the message
     # Example: print the message and send a response back
     if message == 'Hello, server!':
-        response_data = {'status': 'What is love?', 'id' : id}
+        response_data = {'status': 'What is love?'}
     else:
-        response_data = {'status': 'Message received' ,'id' : id}
+        response_data = {'status': 'Message received'}
     return jsonify(response_data), 200
 
 if __name__ == '__main__':
