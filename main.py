@@ -20,7 +20,7 @@ def receive_message():
     if message == 'Hello, server!':
         response_data = {'status': 'What is love?'}
     else:
-        response_data = {'status': 'Message received'}
+        response_data = {'status': id}
     return jsonify(response_data), 200
 
 if __name__ == '__main__':
