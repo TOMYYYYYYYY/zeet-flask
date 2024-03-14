@@ -13,10 +13,11 @@ def hello_world():
 def receive_message():
     data = request.get_json()
     message = data.get('message')
+    id = data.get('id')
     # Process the message
     # Example: print the message and send a response back
     if message == 'Hello, server!':
-        response_data = {'status': 'What is love?'}
+        response_data = {'status': 'What is love?' 'id' : id}
     else:
         response_data = {'status': 'Message received'}
     return jsonify(response_data), 200
