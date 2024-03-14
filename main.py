@@ -17,9 +17,9 @@ def receive_message():
     # Process the message
     # Example: print the message and send a response back
     if message == 'Hello, server!':
-        response_data = {'status': 'What is love?' 'id' : id}
+        response_data = {'status': 'What is love?', 'id' : id}
     else:
-        response_data = {'status': 'Message received'}
+        response_data = {'status': 'Message received' ,'id' : id}
     return jsonify(response_data), 200
 
 if __name__ == '__main__':
