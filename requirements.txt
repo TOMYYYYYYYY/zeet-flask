@@ -1,6 +1,3 @@
 Flask
 flask-cors
 openai
-shelve
-os
-time
