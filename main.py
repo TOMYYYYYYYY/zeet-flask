@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from openai import OpenAI
+From openai import OpenAI
 import shelve
 #from dotenv import load_dotenv
 import os
@@ -16,14 +16,16 @@ client = OpenAI(api_key=OPEN_AI_API_KEY)
 # --------------------------------------------------------------
 # Thread management
 # --------------------------------------------------------------
+my_list = [] # List of id
+list_of_threads = [] # List of threads
+
 def check_if_thread_exists(wa_id):
-    with shelve.open("threads_db") as threads_shelf:
-        return threads_shelf.get(wa_id, None)
+    for i in range(len(my_list)):
+        if my_list[i].wa_id == wa_id:
+            return list_of_threads[i]
+    return none
 
-
-def store_thread(wa_id, thread_id):
-    with shelve.open("threads_db", writeback=True) as threads_shelf:
-        threads_shelf[wa_id] = thread_id
+# ----------- else return none ----------------
 
 # --------------------------------------------------------------
 # Generate response
@@ -36,8 +38,8 @@ def generate_response(message_body, wa_id, name):
     if thread_id is None:
         print(f"Creating new thread for {name} with wa_id {wa_id}")
         thread = client.beta.threads.create()
-        store_thread(wa_id, thread.id)
-        thread_id = thread.id
+        list_of_threads.append(thread)
+        my_list.append(wa_id)
 
     # Otherwise, retrieve the existing thread
     else:
@@ -47,6 +49,7 @@ def generate_response(message_body, wa_id, name):
     # Add message to thread
     message = client.beta.threads.messages.create(
         thread_id=thread_id,
+        #thread_id= thread.id, maybe that???
         role="user",
         content=message_body,
     )
@@ -91,10 +94,8 @@ def receive_message():
     data = request.get_json()
     message = data.get('message')
     id = data.get('id')
-    #test
-    print(message)
+    
     response_data = generate_response(message, id, "John")
-    print(response_data)
     return jsonify(response_data), 200
 
 if __name__ == '__main__':
