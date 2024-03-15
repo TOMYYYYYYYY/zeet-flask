@@ -91,7 +91,10 @@ def receive_message():
     data = request.get_json()
     message = data.get('message')
     id = data.get('id')
+    #test
+    print(message)
     response_data = generate_response(message, id, "John")
+    print(response_data)
     return jsonify(response_data), 200
 
 if __name__ == '__main__':
