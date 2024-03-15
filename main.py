@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-From openai import OpenAI
+from openai import OpenAI
 import shelve
 #from dotenv import load_dotenv
 import os
