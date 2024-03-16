@@ -9,7 +9,8 @@ import time
 app = Flask(__name__)
 CORS(app)
 
-OPEN_AI_API_KEY = "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"
+
+OPEN_AI_API_KEY = "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"
 client = OpenAI(api_key=OPEN_AI_API_KEY)
 
 
@@ -19,11 +20,12 @@ client = OpenAI(api_key=OPEN_AI_API_KEY)
 my_list = [] # List of id
 list_of_threads = [] # List of threads
 
+#not sure it's working
 def check_if_thread_exists(wa_id):
     for i in range(len(my_list)):
         if my_list[i].wa_id == wa_id:
             return list_of_threads[i]
-    return none
+    return None
 
 # ----------- else return none ----------------
 
@@ -40,6 +42,7 @@ def generate_response(message_body, wa_id, name):
         thread = client.beta.threads.create()
         list_of_threads.append(thread)
         my_list.append(wa_id)
+        thread_id = thread.id
 
     # Otherwise, retrieve the existing thread
     else:
@@ -49,7 +52,7 @@ def generate_response(message_body, wa_id, name):
     # Add message to thread
     message = client.beta.threads.messages.create(
         thread_id=thread_id,
-        #thread_id= thread.id, maybe that???
+        #thread_id= thread.id ???
         role="user",
         content=message_body,
     )
@@ -83,6 +86,11 @@ def run_assistant(thread):
     new_message = messages.data[0].content[0].text.value
     print(f"Generated message: {new_message}")
     return new_message
+
+
+#new_message = generate_response("What was my previous question?", "12345", "John")
+
+#peut-être un problème avec le string de question et de id....?
 
 @app.route('/')
 def hello_world():
