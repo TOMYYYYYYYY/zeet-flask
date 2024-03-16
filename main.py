@@ -103,8 +103,13 @@ def receive_message():
     message = data.get('message')
     id = data.get('id')
     
-    response_data = generate_response("What is love?", "1234", "John")
-    return jsonify(response_data), 200
+    formatted_response = {
+        "status": response_data
+    }
+    
+    # Return the formatted response with jsonify
+    return jsonify(formatted_response), 200
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=3000)
