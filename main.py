@@ -102,7 +102,8 @@ def receive_message():
     data = request.get_json()
     message = data.get('message')
     id = data.get('id')
-    
+
+    response_data = generate_response("What is love?", "1234", "John")
     formatted_response = {
         "status": response_data
     }
