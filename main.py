@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openai import OpenAI
 import shelve
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
 import time
 
@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-OPEN_AI_API_KEY = "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"
+OPEN_AI_API_KEY = os.getenv("OPEN_AI_API_KEY")
 client = OpenAI(api_key=OPEN_AI_API_KEY)
 
 
