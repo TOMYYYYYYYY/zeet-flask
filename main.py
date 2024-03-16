@@ -103,7 +103,7 @@ def receive_message():
     message = data.get('message')
     id = data.get('id')
 
-    response_data = generate_response("What is love?", "1234", "John")
+    response_data = generate_response(message, id, "John")
     formatted_response = {
         "status": response_data
     }
