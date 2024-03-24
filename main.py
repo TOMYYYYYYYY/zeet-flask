@@ -23,7 +23,7 @@ list_of_threads = [] # List of threads
 #not sure it's working
 def check_if_thread_exists(wa_id):
     for i in range(len(my_list)):
-        if my_list[i].wa_id == wa_id:
+        if my_list[i] == wa_id:
             return list_of_threads[i]
     return None
 
@@ -67,7 +67,7 @@ def generate_response(message_body, wa_id, name):
 # --------------------------------------------------------------
 def run_assistant(thread):
     # Retrieve the Assistant
-    assistant = client.beta.assistants.retrieve("asst_7CdKruEYCfjtI3zIatVj6wGT")
+    assistant = client.beta.assistants.retrieve("asst_U4s4fpAKjkXHzRxa3NrynaCU")
 
     # Run the assistant
     run = client.beta.threads.runs.create(
