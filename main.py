@@ -35,6 +35,7 @@ def check_if_thread_exists(wa_id):
 def generate_response(message_body, wa_id, name):
     # Check if there is already a thread_id for the wa_id
     thread_id = check_if_thread_exists(wa_id)
+    print(f"thread retrieve: {thread_id}")
 
     # If a thread doesn't exist, create one and store it
     if thread_id is None:
