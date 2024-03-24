@@ -41,7 +41,7 @@ def generate_response(message_body, wa_id, name):
     if thread_id is None:
         print(f"Creating new thread for {name} with wa_id {wa_id}")
         thread = client.beta.threads.create()
-        list_of_threads.append(thread)
+        list_of_threads.append(thread.id)
         my_list.append(wa_id)
         thread_id = thread.id
         print(f"Updated my_list: {my_list}")
