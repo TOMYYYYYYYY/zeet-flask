@@ -45,7 +45,7 @@ def generate_response(message_body, wa_id, name):
         thread_id = thread.id
         print(f"Updated my_list: {my_list}")
         print(f"Updated list_of_threads: {list_of_threads}")
-        print(f"thread ALONE: {thread}" 
+        print(f"thread ALONE: {thread}" )
 
     # Otherwise, retrieve the existing thread
     else:
